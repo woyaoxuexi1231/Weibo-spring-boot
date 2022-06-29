@@ -1,0 +1,36 @@
+server:
+    port: 8080
+#    解决部署在服务器上时，前端访问路径多了一个api，导致访问不了后端的情况
+    servlet:
+        context-path: /api
+spring:
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 50MB
+            max-request-size: 50MB
+    resources:
+        static-locations: classpath:/META-INF/resources/, classpath:/resources/, classpath:/static/, classpath:/templates/,file:${web.upload-path}
+    mvc:
+        static-path-pattern: /image/**
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/weibo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
+    #redis master
+    redis:
+        host: 192.168.142.131
+        port: 6379
+        password: 123456
+
+
+mybatis:
+    type-aliases-package: com.cqut.weibo.pojo
+    mapper-locations: classpath:mapper/*.xml
+app:
+    uploadFolder: E://uploadFiles/
+    previewPath: http://127.0.0.1:8080/image/
+web:
+    upload-path: E://uploadFiles/
+
