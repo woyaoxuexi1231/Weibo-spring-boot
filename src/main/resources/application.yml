@@ -19,14 +19,14 @@ spring:
         static-path-pattern: /image/**
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://1.15.232.5:3306/weibo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
-        username: root
-        password: 123456
+        url: jdbc:mysql://*/weibo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+        username: *
+        password: *
     #redis master
     redis:
-        host: 1.15.232.5
-        port: 6379
-        password: 123456
+        host: *
+        port: *
+        password: *
 
 
 mybatis:
