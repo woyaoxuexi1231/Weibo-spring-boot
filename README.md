@@ -1,5 +1,10 @@
 # Weibo-SpringBoot
 
+#### 项目演示地址
+
+[演示地址](http://1.15.232.5:80)  
+账户名密码：admin/admin
+
 #### 介绍
 仿微博社交平台Springboot后端
 
