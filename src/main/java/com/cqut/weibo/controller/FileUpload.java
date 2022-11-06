@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,12 +14,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 
 @RestController
@@ -31,19 +30,24 @@ public class FileUpload {
     @Autowired
     private AppConfig config;
 
-    //    @ApiOperation("上传图片，多文件")
+
+    /**
+     * 图片上传
+     *
+     * @param httpReq
+     * @param MulReq
+     * @return
+     */
     @PostMapping("/upload")
     @ResponseBody
-    public List<String> upload(HttpServletRequest request1, MultipartHttpServletRequest request) throws IOException {
-        String ctxPath = request1.getSession().getServletContext()
-                .getRealPath("/");
-//        System.out.println(ctxPath);
+    public List<String> upload(HttpServletRequest httpReq, MultipartHttpServletRequest MulReq) {
+        // String ctxPath = httpReq.getSession().getServletContext().getRealPath("/");
         List<String> result = new ArrayList<>();
-        List<MultipartFile> files = request.getFiles("file");
+        List<MultipartFile> files = MulReq.getFiles("file");
         if (files.size() > 0) {
-            for (MultipartFile multipartFile : files) {
-//                System.out.println(multipartFile);
-                result.add(handleFileUpload(multipartFile, request));
+            for (MultipartFile file : files) {
+                //                System.out.println(multipartFile);
+                result.add(handleFileUpload(file, MulReq));
             }
         }
         return result;
@@ -51,14 +55,13 @@ public class FileUpload {
 
 
     /**
+     * 文件处理和保存
+     *
      * @param file
      * @param request
      * @return
-     * @ 单一文件上传
      */
-    @RequestMapping("/upload2")
-    @ResponseBody
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+    private String handleFileUpload(MultipartFile file, HttpServletRequest request) {
         if (!file.isEmpty()) {
             String saveFileName = getFileName(file);
             System.out.println(file.getName());
@@ -68,14 +71,11 @@ public class FileUpload {
                 saveFile.getParentFile().mkdirs();
             }
             try {
-                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(saveFile));
+                BufferedOutputStream out = new BufferedOutputStream(Files.newOutputStream(saveFile.toPath()));
                 out.write(file.getBytes());
                 out.flush();
                 out.close();
                 return config.getPreviewPath() + saveFile.getName();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                return "上传失败,";
             } catch (IOException e) {
                 e.printStackTrace();
                 return "上传失败,";
@@ -85,12 +85,33 @@ public class FileUpload {
         }
     }
 
+    /**
+     * 生成文件名
+     *
+     * @param file
+     * @return
+     */
     private String getFileName(MultipartFile file) {
         String name = file.getOriginalFilename();
-        StringBuilder sb = new StringBuilder();
         Date date = new Date();
-        sb.append(date.getTime());
-        sb.append(name.substring(name.indexOf(".")));
+        assert name != null;
+        return (date.getTime() + "" + getRandomString(20)) + name.substring(name.indexOf("."));
+    }
+
+    /**
+     * 生成一个随机字符串
+     *
+     * @param length
+     * @return
+     */
+    private String getRandomString(int length) {
+        String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int number = random.nextInt(62);
+            sb.append(str.charAt(number));
+        }
         return sb.toString();
     }
 }
