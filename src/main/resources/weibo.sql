@@ -232,3 +232,14 @@ CREATE TABLE `weibo_videos`  (
 -- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+create table if not exists weibo.log
+(
+    id               bigint auto_increment
+    primary key,
+    method_name      varchar(256)                        null,
+    method_param     varchar(2048)                       null,
+    method_result    varchar(2048)                       null,
+    last_update_time timestamp default CURRENT_TIMESTAMP null
+    );
+

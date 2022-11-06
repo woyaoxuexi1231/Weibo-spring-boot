@@ -2,7 +2,6 @@ package com.cqut.weibo.security.service;
 
 import com.cqut.weibo.dto.Result;
 import com.cqut.weibo.security.pojo.User;
-import org.springframework.stereotype.Service;
 
 public interface UserService {
 

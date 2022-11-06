@@ -1,5 +1,7 @@
 package com.cqut.weibo.dto;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ import java.util.Date;
  * @Author:HL
  * @date:2021.04.26.14.48.58
  */
+@Data
 public class AlipayNotifyParam {
     private String appId;
     private String tradeNo; // 支付宝交易凭证号
@@ -30,173 +33,4 @@ public class AlipayNotifyParam {
     private Date gmtClose; // 该笔交易结束时间。格式为yyyy-MM-dd HH:mm:ss
     private String fundBillList; // 支付成功的各个渠道金额信息,array
     private String passbackParams; // 公共回传参数，如果请求时传递了该参数，则返回给商户时会在异步通知时将该参数原样返回。
-
-
-    public String getAppId() {
-        return appId;
-    }
-
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
-
-    public String getTradeNo() {
-        return tradeNo;
-    }
-
-    public void setTradeNo(String tradeNo) {
-        this.tradeNo = tradeNo;
-    }
-
-    public String getOutTradeNo() {
-        return outTradeNo;
-    }
-
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
-    }
-
-    public String getOutBizNo() {
-        return outBizNo;
-    }
-
-    public void setOutBizNo(String outBizNo) {
-        this.outBizNo = outBizNo;
-    }
-
-    public String getBuyerId() {
-        return buyerId;
-    }
-
-    public void setBuyerId(String buyerId) {
-        this.buyerId = buyerId;
-    }
-
-    public String getBuyerLogonId() {
-        return buyerLogonId;
-    }
-
-    public void setBuyerLogonId(String buyerLogonId) {
-        this.buyerLogonId = buyerLogonId;
-    }
-
-    public String getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    public String getSellerEmail() {
-        return sellerEmail;
-    }
-
-    public void setSellerEmail(String sellerEmail) {
-        this.sellerEmail = sellerEmail;
-    }
-
-    public String getTradeStatus() {
-        return tradeStatus;
-    }
-
-    public void setTradeStatus(String tradeStatus) {
-        this.tradeStatus = tradeStatus;
-    }
-
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public BigDecimal getReceiptAmount() {
-        return receiptAmount;
-    }
-
-    public void setReceiptAmount(BigDecimal receiptAmount) {
-        this.receiptAmount = receiptAmount;
-    }
-
-    public BigDecimal getBuyerPayAmount() {
-        return buyerPayAmount;
-    }
-
-    public void setBuyerPayAmount(BigDecimal buyerPayAmount) {
-        this.buyerPayAmount = buyerPayAmount;
-    }
-
-    public BigDecimal getRefundFee() {
-        return refundFee;
-    }
-
-    public void setRefundFee(BigDecimal refundFee) {
-        this.refundFee = refundFee;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public Date getGmtPayment() {
-        return gmtPayment;
-    }
-
-    public void setGmtPayment(Date gmtPayment) {
-        this.gmtPayment = gmtPayment;
-    }
-
-    public Date getGmtRefund() {
-        return gmtRefund;
-    }
-
-    public void setGmtRefund(Date gmtRefund) {
-        this.gmtRefund = gmtRefund;
-    }
-
-    public Date getGmtClose() {
-        return gmtClose;
-    }
-
-    public void setGmtClose(Date gmtClose) {
-        this.gmtClose = gmtClose;
-    }
-
-    public String getFundBillList() {
-        return fundBillList;
-    }
-
-    public void setFundBillList(String fundBillList) {
-        this.fundBillList = fundBillList;
-    }
-
-    public String getPassbackParams() {
-        return passbackParams;
-    }
-
-    public void setPassbackParams(String passbackParams) {
-        this.passbackParams = passbackParams;
-    }
 }

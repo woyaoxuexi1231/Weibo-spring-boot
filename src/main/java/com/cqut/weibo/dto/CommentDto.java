@@ -1,10 +1,12 @@
 package com.cqut.weibo.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+@Data
 public class CommentDto {
 
     private Integer id;
@@ -23,59 +25,4 @@ public class CommentDto {
 
     private String commentUserName;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getWeiboId() {
-        return weiboId;
-    }
-
-    public void setWeiboId(Integer weiboId) {
-        this.weiboId = weiboId;
-    }
-
-    public String getCommentText() {
-        return commentText;
-    }
-
-    public void setCommentText(String commentText) {
-        this.commentText = commentText;
-    }
-
-    public Date getCommentCreateTime() {
-        return commentCreateTime;
-    }
-
-    public void setCommentCreateTime(Date commentCreateTime) {
-        this.commentCreateTime = commentCreateTime;
-    }
-
-    public Integer getCommentUserId() {
-        return commentUserId;
-    }
-
-    public void setCommentUserId(Integer commentUserId) {
-        this.commentUserId = commentUserId;
-    }
-
-    public String getCommentUserAvatar() {
-        return commentUserAvatar;
-    }
-
-    public void setCommentUserAvatar(String commentUserAvatar) {
-        this.commentUserAvatar = commentUserAvatar;
-    }
-
-    public String getCommentUserName() {
-        return commentUserName;
-    }
-
-    public void setCommentUserName(String commentUserName) {
-        this.commentUserName = commentUserName;
-    }
 }
