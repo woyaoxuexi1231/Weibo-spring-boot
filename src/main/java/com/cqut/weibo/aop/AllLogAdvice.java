@@ -53,11 +53,11 @@ public class AllLogAdvice {
         } finally {
             stopWatch.stop();
             log.info("Invoke Method {}, Param: {}, Time: {}ms", methodName, param, stopWatch.getTotalTimeMillis());
-            final LogDO logDO = LogDO.builder()
-                    .methodName(methodName)
-                    .methodParam(Arrays.toString(param))
-                    .methodResult(result.toString())
-                    .build();
+            final LogDO logDO = new LogDO();
+            logDO.setMethodName(methodName.length() > 256 ? methodName.substring(0, 256) : methodName);
+            String paramStr = Arrays.toString(param);
+            logDO.setMethodParam(paramStr.length() > 2048 ? paramStr.substring(0, 2048) : paramStr);
+            logDO.setMethodResult(result.toString().length() > 2048 ? paramStr.substring(0, 2048) : result.toString());
             EXECUTOR.execute(() -> {
                 logMapper.insert(logDO);
             });
@@ -65,7 +65,7 @@ public class AllLogAdvice {
 
     }
 
-    @Pointcut("execution(* com.cqut.weibo.service.*.*(..)) ||" + "execution(* com.cqut.weibo.security.service.*.*(..))")
+    @Pointcut("execution(* com.cqut.weibo.controller.*.*(..)) ||" + "execution(* com.cqut.weibo.security.controller.*.*(..))")
     public void pointCut() {
     }
 }

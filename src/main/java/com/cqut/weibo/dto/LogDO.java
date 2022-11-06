@@ -17,7 +17,6 @@ import lombok.Data;
  * @see :
  */
 @Data
-@Builder
 public class LogDO {
     /**
      * 方法名

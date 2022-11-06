@@ -19,22 +19,22 @@ spring:
         static-path-pattern: /image/**
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/weibo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
-        username: *
-        password: *
+        url: jdbc:mysql://1.15.232.5:3306/weibo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
     #redis master
     redis:
-        host: 192.168.142.131
-        port: *
-        password: *
+        host: 1.15.232.5
+        port: 6379
+        password: 123456
 
 
 mybatis:
     type-aliases-package: com.cqut.weibo.pojo
     mapper-locations: classpath:mapper/*.xml
 app:
-    uploadFolder: E://uploadFiles/
+    uploadFolder: C://uploadFiles/
     previewPath: http://127.0.0.1:8080/image/
 web:
-    upload-path: E://uploadFiles/
+    upload-path: C://uploadFiles/
 
