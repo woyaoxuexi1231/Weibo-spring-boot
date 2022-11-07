@@ -57,7 +57,7 @@ public class AllLogAdvice {
             logDO.setMethodName(methodName.length() > 256 ? methodName.substring(0, 256) : methodName);
             String paramStr = Arrays.toString(param);
             logDO.setMethodParam(paramStr.length() > 2048 ? paramStr.substring(0, 2048) : paramStr);
-            logDO.setMethodResult(result.toString().length() > 2048 ? paramStr.substring(0, 2048) : result.toString());
+            logDO.setMethodResult(result.toString().length() > 2048 ? result.toString().substring(0, 2048) : result.toString());
             EXECUTOR.execute(() -> {
                 logMapper.insert(logDO);
             });
