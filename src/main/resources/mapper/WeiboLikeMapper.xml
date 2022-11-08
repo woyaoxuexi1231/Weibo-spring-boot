@@ -32,6 +32,6 @@
     from weibo_like
   </select>
   <select id="selectWeiboLikeState" resultMap="BaseResultMap">
-    select * from weibo_like where weibo_id = #{weiboId} and user_id = #{userId}
+    select * from weibo_like where weibo_id = #{weiboId} and user_id = #{userId} limit 1
   </select>
 </mapper>
