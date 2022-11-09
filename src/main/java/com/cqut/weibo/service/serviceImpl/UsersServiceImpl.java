@@ -463,6 +463,33 @@ public class UsersServiceImpl implements UsersService {
         return result;
     }
 
+    @Override
+    public Result getWeiboBySearchId(Integer userId, Integer searchId) {
+        Result<List<WeiboDto>> result = new Result<>();
+        List<WeiboDto> weibos = weiboMapper.selectByUserId(searchId);
+        //查询当前用户点赞的微博有哪些
+        for (int i = 0; i < weibos.size(); i++) {
+            if (weiboLikeMapper.selectWeiboLikeState(weibos.get(i).getId(), userId) != null) {
+                weibos.get(i).setLikeState(true);
+            }
+        }
+        //查询当前微博是否含有图片
+        for (int i = 0; i < weibos.size(); i++) {
+            List<ImageListDto> weiboImageList = weiboImageMapper.selectByWeiboId(weibos.get(i).getId());
+            if (weiboImageList.size() != 0) {
+                weibos.get(i).setImageList(weiboImageList);
+            }
+        }
+        //查询当前微博是否含有视频
+        for (int i = 0; i < weibos.size(); i++) {
+            weibos.get(i).setVideo(weiboVideoMapper.selectByWeiboId(weibos.get(i).getId()));
+        }
+        result.setCode(200);
+        result.setMessage("查询成功");
+        result.setData(weibos);
+        return result;
+    }
+
     /**
      * 添加订单信息（会员充值）
      *

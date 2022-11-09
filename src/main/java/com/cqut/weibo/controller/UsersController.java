@@ -85,6 +85,18 @@ public class UsersController {
     }
 
     /**
+     * 查询页面查询通过id查询微博
+     *
+     * @param userId uid
+     * @return result
+     */
+    @RequestMapping("/getWeiboBySearchId")
+    public Result getWeiboBySearchId(Integer userId, Integer searchId) {
+        return usersService.getWeiboBySearchId(userId, searchId);
+    }
+
+
+    /**
      * 根据用户id查询用户发表的微博数量
      *
      * @param userId

@@ -53,4 +53,6 @@ public interface UsersService {
     boolean checkIsVip(Integer userID);
 
     Result checkUserIsExist(String userName, String userPhone, Integer uid);
+
+    Result getWeiboBySearchId(Integer userId, Integer searchId);
 }
