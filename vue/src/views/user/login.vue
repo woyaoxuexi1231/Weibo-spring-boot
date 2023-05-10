@@ -90,7 +90,7 @@ export default {
       }
       if (this.ruleForm.username != null && this.ruleForm.username != "" && this.ruleForm.password != null && this.ruleForm.password != "") {
         this.$axios
-          .post("/login", qs.stringify(this.ruleForm), {
+          .post("/security/login", qs.stringify(this.ruleForm), {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
             }

@@ -102,7 +102,7 @@ export default {
     },
     // 退出登录
     logout() {
-      this.$axios.post("/logout", {
+      this.$axios.post("/security/logout", {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         }
