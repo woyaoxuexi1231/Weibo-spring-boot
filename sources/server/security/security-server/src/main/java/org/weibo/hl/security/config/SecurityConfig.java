@@ -39,7 +39,7 @@ import java.util.Map;
  * @package: org.weibo.hl.security.config
  * @className: SecurityConfig
  * @description:
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/10 21:28
  */
 

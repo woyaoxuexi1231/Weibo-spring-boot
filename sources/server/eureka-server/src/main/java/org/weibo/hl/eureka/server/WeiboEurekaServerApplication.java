@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * @package: org.weibo.hl.eureka.server
  * @className: EurekaServerApplication
  * @description:
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/9 22:50
  */
 

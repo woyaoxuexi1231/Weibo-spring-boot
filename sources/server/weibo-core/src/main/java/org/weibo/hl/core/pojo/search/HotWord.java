@@ -1,4 +1,4 @@
-package org.weibo.hl.core.pojo.redis;
+package org.weibo.hl.core.pojo.search;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.Data;
  * @package: org.weibo.hl.core.pojo.redis
  * @className: HotWord
  * @description:
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/11 0:15
  */
 

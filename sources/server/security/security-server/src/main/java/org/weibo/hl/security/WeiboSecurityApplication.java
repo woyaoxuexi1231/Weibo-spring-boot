@@ -10,7 +10,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @package: org.weibo.hl.security
  * @className: WeiboSecurtityApplication
  * @description:
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/10 0:11
  */
 

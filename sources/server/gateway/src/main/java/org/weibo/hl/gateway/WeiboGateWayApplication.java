@@ -10,7 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @package: org.weibo.hl.gateway
  * @className: WeiboGateWayApplication
  * @description:
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/10 22:30
  */
 

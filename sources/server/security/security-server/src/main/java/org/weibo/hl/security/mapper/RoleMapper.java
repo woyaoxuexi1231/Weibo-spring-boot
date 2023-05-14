@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.weibo.hl.security.pojo.Role;
 import tk.mybatis.mapper.common.BaseMapper;
 
+
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  * @package: org.weibo.hl.security.mapper
  * @className: RoleMapper
  * @description:
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/10 21:27
  */
 
