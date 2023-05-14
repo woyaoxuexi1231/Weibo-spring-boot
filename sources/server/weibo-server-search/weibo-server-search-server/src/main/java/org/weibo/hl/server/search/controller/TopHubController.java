@@ -1,11 +1,12 @@
-package org.weibo.hl.server.controller;
+package org.weibo.hl.server.search.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.weibo.hl.core.pojo.redis.HotWord;
+import org.weibo.hl.core.pojo.search.HotWord;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,10 +17,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @projectName: weibo
- * @package: org.weibo.hl.server.controller
+ * @package: org.weibo.hl.server.search.controller
  * @className: TopHubController
  * @description: 热搜
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/11 0:08
  */
 
@@ -27,27 +28,8 @@ import java.util.concurrent.TimeUnit;
 public class TopHubController {
 
     @Autowired
+    @Qualifier(value = "redisTemplate")
     RedisTemplate<Object, Object> redisTemplate;
-
-    /**
-     * 设置缓存失效时间，统一为凌晨零点
-     *
-     * @param hotWord
-     * @throws Exception
-     */
-    @RequestMapping("/addHotWord")
-    public void addHotWord(String hotWord) throws Exception {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        //晚上十二点与当前时间的毫秒差
-        long timeOut = (calendar.getTimeInMillis() - System.currentTimeMillis()) / 1000;
-        redisTemplate.expire("hotWord", timeOut, TimeUnit.SECONDS);
-        redisTemplate.opsForZSet().incrementScore("hotWord", hotWord, 1); // 加入排序set
-    }
 
     /**
      * 获取热词前五位

@@ -116,7 +116,7 @@ export default {
     },
     //获取热搜词汇
     getHotWord() {
-      this.$axios.get("/server/getHotWord")
+      this.$axios.get("/search/getHotWord")
         .then(res => {
           console.log(res);
           this.hotWord = res.data;
