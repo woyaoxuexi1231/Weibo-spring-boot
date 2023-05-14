@@ -14,7 +14,7 @@ import javax.persistence.Id;
  * @package: org.weibo.hl.security.pojo
  * @className: Role
  * @description:
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/10 21:24
  */
 

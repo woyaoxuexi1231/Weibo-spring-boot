@@ -16,7 +16,7 @@ import java.util.List;
  * @package: org.weibo.hl.security.pojo
  * @className: User
  * @description:
- * @author: h1123
+ * @author: hl
  * @createDate: 2023/5/10 21:26
  */
 
