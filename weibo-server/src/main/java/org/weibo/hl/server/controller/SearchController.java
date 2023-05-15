@@ -27,7 +27,6 @@ public class SearchController {
 
     @GetMapping("/getSearchResult")
     public ResultDTO<?> getSearchResult(SearchReqDTO req) {
-        // 1. 获取用户信息
         SearchRspDTO rsp = searchService.getSearchResult(req);
         return ResultDTOBuilder.resultSuccessBuild(rsp);
     }

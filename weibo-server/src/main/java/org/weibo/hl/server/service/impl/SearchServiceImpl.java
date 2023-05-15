@@ -8,9 +8,9 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.weibo.hl.core.consts.MessageConsts;
 import org.weibo.hl.core.pojo.search.SearchMsgDTO;
-import org.weibo.hl.security.api.pojo.req.UserInfoQueryReqDTO;
 import org.weibo.hl.security.api.pojo.rsp.UserCommonInfoDTO;
 import org.weibo.hl.server.model.req.SearchReqDTO;
 import org.weibo.hl.server.model.rsp.SearchRspDTO;
@@ -18,6 +18,7 @@ import org.weibo.hl.server.service.SearchFeignService;
 import org.weibo.hl.server.service.SearchService;
 
 import javax.annotation.Resource;
+import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,14 +49,19 @@ public class SearchServiceImpl implements SearchService {
 
         // 1. 获取用户信息
         log.info("获取用户信息");
-        UserInfoQueryReqDTO userReq = new UserInfoQueryReqDTO();
-        userReq.setUsername(req.getKeyWord());
+        // UserInfoQueryReqDTO userReq = new UserInfoQueryReqDTO();
+        // userReq.setUsername(req.getKeyWord());
         // Map userReq = new HashMap();
         // userReq.put("username",req.getKeyWord());
         // String reqs =  JSONObject.toJSONString(userReq);
         // List<UserCommonInfoDTO> userRsp = restTemplate.getForObject("http://weibo-security/getUserInfo", List.class, reqs);
-        List<UserCommonInfoDTO> userRsp = restTemplate.postForObject("http://weibo-security/getUserInfo", userReq, List.class);
+        // List<UserCommonInfoDTO> userRsp = restTemplate.postForObject("http://weibo-security/getUserInfo", userReq, List.class);
         // List<UserCommonInfoDTO> userRsp = searchFeignService.getUserInfo(userReq);
+        URI uri = UriComponentsBuilder.fromUriString("http://weibo-security/getUserInfo")
+                .queryParam("username", req.getKeyWord())
+                .build()
+                .toUri();
+        List<UserCommonInfoDTO> userRsp = restTemplate.getForObject(uri, List.class);
 
         // 把这个搜索消息发送到 MQ, 供其他应用消费
         try {

@@ -1,8 +1,7 @@
 package org.weibo.hl.security.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.weibo.hl.security.api.pojo.req.UserInfoQueryReqDTO;
 import org.weibo.hl.security.api.pojo.rsp.UserCommonInfoDTO;
@@ -26,8 +25,8 @@ public class ProviderForWeiboSearch {
     @Autowired
     UserService userService;
 
-    @PostMapping("/getUserInfo")
-    public List<UserCommonInfoDTO> getUserInfo(@RequestBody UserInfoQueryReqDTO req) {
+    @GetMapping("/getUserInfo")
+    public List<UserCommonInfoDTO> getUserInfo(UserInfoQueryReqDTO req) {
         return userService.getUserInfo(req);
     }
 }

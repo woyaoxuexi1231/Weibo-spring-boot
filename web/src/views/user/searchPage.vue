@@ -25,7 +25,7 @@
               <el-avatar :size="50" :src="o.userAvatar" style="float: left"></el-avatar>
             </div>
             <div style="margin-left: 10px">
-              <span @click="jumpToUserIndexBySearch(o.id)">{{ o.userName }}</span>
+              <span @click="jumpToUserIndexBySearch(o.id)">{{ o.username }}</span>
               <el-button size="mini" v-if="o.follow">已关注</el-button>
               <el-button size="mini" v-if="!o.follow" @click="addFollow(o.id,index)">+关注</el-button>
             </div>
@@ -63,7 +63,6 @@ export default {
       if (sessionStorage.getItem("uid") == null) {
         sessionStorage.setItem("uid", "");
       }
-      console.log("123131");
       // 按照关键词进行搜索
       this.$axios.get('/server/getSearchResult', {
         // method: 'GET',
@@ -72,11 +71,11 @@ export default {
           keyWord: this.searchInfo
         }
       }).then(res => {
-        this.users = res.data.data;
+        this.users = res.data.data.userCommonInfoDTOS;
       }).catch(err => {
         console.log(err);
       })
-      console.log("123132");
+      console.log(this.users)
       // // 搜索后增加这个热词进入热搜库
       // this.$axios.get("/search/addHotWord?hotWord="+this.searchInfo)
       //   .then(res => {
@@ -89,7 +88,7 @@ export default {
     getHotWord() {
       this.$axios.get("/search/getHotWord")
         .then(res => {
-          console.log(res);
+          // console.log(res);
           this.hotWord = res.data;
         }).catch(err => {
         console.log(err);
@@ -101,7 +100,7 @@ export default {
       //获取搜索的结果
       this.getUsersByLikeName();
       this.getHotWord();
-      console.log(this.users);
+      // console.log(this.users);
     },
     addFollow(followId, index) {
       var uid = sessionStorage.getItem("uid");
