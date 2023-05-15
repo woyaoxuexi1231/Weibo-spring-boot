@@ -1,7 +1,5 @@
 package org.weibo.hl.server.search.service.impl;
 
-import org.apache.dubbo.config.annotation.DubboService;
-import org.apache.dubbo.rpc.AsyncRpcResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;

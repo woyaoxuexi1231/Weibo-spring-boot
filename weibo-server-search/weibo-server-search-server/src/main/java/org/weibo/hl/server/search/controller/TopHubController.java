@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.weibo.hl.core.pojo.search.HotWord;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @projectName: weibo

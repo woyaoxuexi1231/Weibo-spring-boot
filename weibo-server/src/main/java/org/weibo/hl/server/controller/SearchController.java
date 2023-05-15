@@ -9,7 +9,6 @@ import org.weibo.hl.server.model.rsp.SearchRspDTO;
 import org.weibo.hl.server.service.SearchService;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @projectName: weibo
