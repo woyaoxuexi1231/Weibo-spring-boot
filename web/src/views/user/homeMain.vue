@@ -307,14 +307,28 @@ export default {
     }
   },
   methods: {
-    getUserById(id) {
-      this.$axios.get("/user/getUserById?id=" + id)
+
+    /**********************************数据查询相关接口*********************************/
+    /* 获取用户的基本信息 */
+    getCurrentUserInfo(id) {
+      this.$axios.post("/user/getCurrentUserInfo", {
+        firstName: 'Fred',
+        lastName: 'Flintstone',
+        token: "123"
+      })
         .then(res => {
           this.userInfo = res.data.data;
         }).catch(err => {
-        console.log(err);
+        // console.log(err);
+        this.$notify.error({
+          title: '失败',
+          message: "登录已失效, 请重新登录! ",
+        });
+        this.$cookies.remove('token');
+        this.$router.push({name: 'login'});
       })
     },
+
     getWeiboFromFollowsAndMe() {
       this.$axios.get("/user/getWeiboFromFollowsAndMe?uid=" + this.uid)
         .then(res => {
@@ -464,6 +478,8 @@ export default {
           })
       }
     },
+
+    // 退出登录
     logout() {
       this.$axios.post("/security/logout", {
         headers: {
@@ -477,7 +493,7 @@ export default {
       })
     },
 
-
+    /******************************文件相关*******************************/
     // 多图片上传，成功之后返回文件信息
     handleAvatarSuccess(res, file) {
       console.log("文件地址：" + res);
@@ -602,11 +618,11 @@ export default {
     if (this.uid == null || this.uid == undefined || this.uid == "") {
       this.$router.push({name: "login"})
     }
-    this.getUserById(this.uid);
-    this.getWeiboCountByUserId()
-    this.getFollowCountByUserId();
-    this.getFollowerCountByUserId();
-    this.getWeiboFromFollowsAndMe();
+    this.getCurrentUserInfo(this.uid);
+    // this.getWeiboCountByUserId()
+    // this.getFollowCountByUserId();
+    // this.getFollowerCountByUserId();
+    // this.getWeiboFromFollowsAndMe();
   }
 }
 </script>

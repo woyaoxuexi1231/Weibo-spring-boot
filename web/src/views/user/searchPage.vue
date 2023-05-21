@@ -64,7 +64,7 @@ export default {
         sessionStorage.setItem("uid", "");
       }
       // 按照关键词进行搜索
-      this.$axios.get('/server/getSearchResult', {
+      this.$axios.get('/search/getSearchResult', {
         // method: 'GET',
         // url: '/server/getSearchResult',
         params: {
@@ -73,7 +73,11 @@ export default {
       }).then(res => {
         this.users = res.data.data.userCommonInfoDTOS;
       }).catch(err => {
-        console.log(err);
+        console.log(err)
+        this.$notify.error({
+          title: '失败',
+          message: err.msg,
+        });
       })
       console.log(this.users)
       // // 搜索后增加这个热词进入热搜库

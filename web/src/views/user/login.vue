@@ -133,9 +133,10 @@ export default {
     this.init();
     sessionStorage.setItem("loginPage", "login");
     var uid = sessionStorage.getItem("uid");
-    if (uid != null && uid != undefined && uid != "") {
-      this.$router.push({name: "homeMain"})
-    }
+    var token = this.$cookies.get('token');
+    // if (token != null && token !== "") {
+    //   this.$router.push({name: "homeMain"})
+    // }
   }
 }
 </script>

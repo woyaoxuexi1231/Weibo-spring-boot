@@ -6,44 +6,49 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
+import VueCookies from "vue-cookies";
 
 Vue.use(ElementUI)
+Vue.use(VueCookies);
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
-axios.defaults.baseURL="/api";
+axios.defaults.baseURL = "/api";
 /* eslint-disable no-new */
 // http response 响应拦截器
 axios.interceptors.response.use(response => {
   // console.log(response);
   return response;
-},error => {
+}, error => {
   if (error.response) {
     switch (error.response.status) {
-      // 返回401，清除token信息并跳转到登录页面
+      // 返回 401，清除 token 信息并跳转到登录页面
       case 401:
-        //localStorage.removeItem('token');
-        if(sessionStorage.getItem("loginPage")=="loginAdmin"){
-          // 跳转管理员登录页面
-          router.replace({
-            path: '/loginAdmin'
-            //登录成功后跳入浏览的当前页面
-            // query: {redirect: router.currentRoute.fullPath}
-          });
-        }else {
-          // 跳转普通用户登录页面
-          router.replace({
-            path: '/'
-            //登录成功后跳入浏览的当前页面
-            // query: {redirect: router.currentRoute.fullPath}
-          });
-        }
+        localStorage.removeItem('token');
+        // if(sessionStorage.getItem("loginPage")=="loginAdmin"){
+        //   // 跳转管理员登录页面
+        //   router.replace({
+        //     path: '/loginAdmin'
+        //     //登录成功后跳入浏览的当前页面
+        //     // query: {redirect: router.currentRoute.fullPath}
+        //   });
+        // }else {
+        //   // 跳转普通用户登录页面
+        //   router.replace({
+        //     path: '/'
+        //     //登录成功后跳入浏览的当前页面
+        //     // query: {redirect: router.currentRoute.fullPath}
+        //   });
+        // }
+        // alert(error.response.data.msg)
+        // router.replace({
+        //   path: '/login'
+        //   //登录成功后跳入浏览的当前页面
+        //   // query: {redirect: router.currentRoute.fullPath}
+        // });
         break;
 
       case 403:
-        console.log("非法访问已退出，重新登录");
-        router.replace({
-          path: '/'
-        })
+        // alert("无权限操作")
         break;
     }
     // 返回接口返回的错误信息
@@ -53,6 +58,6 @@ axios.interceptors.response.use(response => {
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })

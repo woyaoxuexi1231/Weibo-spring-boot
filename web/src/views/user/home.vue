@@ -147,8 +147,8 @@ export default {
     if (this.uid == "" || this.uid == null || this.uid == undefined) {
       console.log("当前为游客访问");
     } else {
-      this.getUserById(this.uid);
-      this.checkIsVip(this.uid);
+      // this.getUserById(this.uid);
+      // this.checkIsVip(this.uid);
     }
   }
 }
