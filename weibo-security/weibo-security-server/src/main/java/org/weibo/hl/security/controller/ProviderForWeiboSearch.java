@@ -29,4 +29,8 @@ public class ProviderForWeiboSearch {
     public List<UserCommonInfoDTO> getUserInfo(UserInfoQueryReqDTO req) {
         return userService.getUserInfo(req);
     }
+
+    // public UserCommonInfoDTO getUserInfoByToken(){
+    //
+    // }
 }
