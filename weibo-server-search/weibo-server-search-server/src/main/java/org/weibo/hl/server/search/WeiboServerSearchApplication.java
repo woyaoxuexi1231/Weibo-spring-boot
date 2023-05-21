@@ -3,6 +3,7 @@ package org.weibo.hl.server.search;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @projectName: weibo
@@ -13,6 +14,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @createDate: 2023/5/14 19:44
  */
 
+@EnableFeignClients
 @EnableEurekaClient
 @SpringBootApplication
 public class WeiboServerSearchApplication {
