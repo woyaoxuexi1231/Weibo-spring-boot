@@ -2,6 +2,8 @@ package org.weibo.hl.security.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.weibo.hl.security.api.pojo.req.UserInfoQueryReqDTO;
 import org.weibo.hl.security.api.pojo.rsp.UserCommonInfoDTO;
@@ -30,7 +32,12 @@ public class ProviderForWeiboSearch {
         return userService.getUserInfo(req);
     }
 
-    // public UserCommonInfoDTO getUserInfoByToken(){
-    //
-    // }
+    @RequestMapping("/getCurrentUserInfo")
+    public UserCommonInfoDTO getCurrentUserInfo(@RequestBody(required = false) UserInfoQueryReqDTO req) {
+        System.out.println(req);
+        UserCommonInfoDTO userCommonInfoDTO = new UserCommonInfoDTO();
+        userCommonInfoDTO.setId(2L);
+        userCommonInfoDTO.setUsername("admin");
+        return userCommonInfoDTO;
+    }
 }

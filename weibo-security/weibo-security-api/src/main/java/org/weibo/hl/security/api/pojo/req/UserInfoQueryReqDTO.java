@@ -15,4 +15,6 @@ import lombok.Data;
 public class UserInfoQueryReqDTO {
 
     private String username;
+
+    private String token;
 }
