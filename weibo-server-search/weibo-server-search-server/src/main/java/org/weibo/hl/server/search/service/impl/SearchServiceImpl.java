@@ -1,4 +1,4 @@
-package org.weibo.hl.server.service.impl;
+package org.weibo.hl.server.search.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
@@ -12,10 +12,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.weibo.hl.core.consts.MessageConsts;
 import org.weibo.hl.core.pojo.search.SearchMsgDTO;
 import org.weibo.hl.security.api.pojo.rsp.UserCommonInfoDTO;
-import org.weibo.hl.server.model.req.SearchReqDTO;
-import org.weibo.hl.server.model.rsp.SearchRspDTO;
-import org.weibo.hl.server.service.SearchFeignService;
-import org.weibo.hl.server.service.SearchService;
+import org.weibo.hl.server.search.api.model.req.SearchReqDTO;
+import org.weibo.hl.server.search.api.model.rsp.SearchRspDTO;
+import org.weibo.hl.server.search.api.service.SearchService;
+import org.weibo.hl.server.search.service.SearchFeignService;
 
 import javax.annotation.Resource;
 import java.net.URI;

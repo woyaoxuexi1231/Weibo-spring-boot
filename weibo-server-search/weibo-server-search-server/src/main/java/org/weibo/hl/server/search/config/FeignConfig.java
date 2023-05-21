@@ -1,4 +1,4 @@
-package org.weibo.hl.server.config;
+package org.weibo.hl.server.search.config;
 
 import feign.Retryer;
 import org.springframework.context.annotation.Bean;

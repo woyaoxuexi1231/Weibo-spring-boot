@@ -1,4 +1,4 @@
-package org.weibo.hl.server.model.rsp;
+package org.weibo.hl.server.search.api.model.rsp;
 
 import lombok.Data;
 import org.weibo.hl.security.api.pojo.rsp.UserCommonInfoDTO;

@@ -1,7 +1,7 @@
-package org.weibo.hl.server.service;
+package org.weibo.hl.server.search.api.service;
 
-import org.weibo.hl.server.model.req.SearchReqDTO;
-import org.weibo.hl.server.model.rsp.SearchRspDTO;
+import org.weibo.hl.server.search.api.model.req.SearchReqDTO;
+import org.weibo.hl.server.search.api.model.rsp.SearchRspDTO;
 
 /**
  * @projectName: weibo

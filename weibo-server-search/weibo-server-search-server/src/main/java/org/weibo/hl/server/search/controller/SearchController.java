@@ -1,12 +1,12 @@
-package org.weibo.hl.server.controller;
+package org.weibo.hl.server.search.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.weibo.hl.core.pojo.ResultDTO;
 import org.weibo.hl.core.util.ResultDTOBuilder;
-import org.weibo.hl.server.model.req.SearchReqDTO;
-import org.weibo.hl.server.model.rsp.SearchRspDTO;
-import org.weibo.hl.server.service.SearchService;
+import org.weibo.hl.server.search.api.model.req.SearchReqDTO;
+import org.weibo.hl.server.search.api.model.rsp.SearchRspDTO;
+import org.weibo.hl.server.search.api.service.SearchService;
 
 import javax.annotation.Resource;
 

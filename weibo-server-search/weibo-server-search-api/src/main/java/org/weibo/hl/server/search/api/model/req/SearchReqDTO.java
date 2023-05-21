@@ -1,4 +1,4 @@
-package org.weibo.hl.server.model.req;
+package org.weibo.hl.server.search.api.model.req;
 
 import lombok.Data;
 
