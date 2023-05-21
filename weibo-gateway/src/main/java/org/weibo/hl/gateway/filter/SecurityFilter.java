@@ -1,6 +1,7 @@
 package org.weibo.hl.gateway.filter;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.weibo.hl.core.util.ResultDTOBuilder;
 import org.weibo.hl.gateway.properties.IgnoreWhiteProperties;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -58,7 +60,9 @@ public class SecurityFilter implements GlobalFilter, Ordered {
             String userId = stringRedisTemplate.opsForValue().get("weibo::security::token::" + token);
             if (userId != null) {
                 // 续约 token
-                stringRedisTemplate.opsForValue().set("weibo::security::token::" + token, userId, 60 * 1000, TimeUnit.MILLISECONDS);
+                stringRedisTemplate.opsForValue().set("weibo::security::token::" + token, userId, 10 * 60 * 1000, TimeUnit.MILLISECONDS);
+
+                // todo 这里想在这里塞入参数, 卡住了
                 return chain.filter(exchange);
             } else {
                 // 白名单
