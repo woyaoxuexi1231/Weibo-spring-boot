@@ -24,6 +24,11 @@
             <artifactId>weibo-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.weibo.hl</groupId>
+            <artifactId>weibo-security-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <profiles>
